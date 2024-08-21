@@ -1,0 +1,5 @@
+INSERT INTO role (ROLE_ID, name) VALUES ('63d2a8ce-6832-455d-9ddf-6ba596bc0a7e', 'ROLE_ADMIN');
+
+INSERT INTO role (ROLE_ID, name) VALUES ('1b3c5a05-12e1-43b8-8c3b-f1fd5bb8e418', 'ROLE_USER');
+
+INSERT INTO role (ROLE_ID, name) VALUES ('e2a6c3e2-e80e-47f3-bae6-3feb1dbbf67d', 'ROLE_VIEW');
