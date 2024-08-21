@@ -1,0 +1,8 @@
+spring:
+    application:
+        name: common-service
+    config:
+        location: en
+    messages:
+        basename: messages
+        encoding: UTF-8

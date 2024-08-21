@@ -1,0 +1,30 @@
+server:
+    port: 4003
+    servlet:
+        encoding:
+            charset: UTF-8
+            enabled: true
+    tomcat:
+        uri-encoding: UTF-8
+spring:
+    application:
+        name: user-service
+    config:
+        location: en
+    data:
+        mongodb:
+            database: dm_ecommerce_db
+            host: localhost
+            port: 27017
+    datasource:
+        driver-class-name: oracle.jdbc.OracleDriver
+        password: 123456
+        url: jdbc:oracle:thin:@localhost:1521:orcl
+        username: sys as sysdba
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+    messages:
+        basename: messages/messages
+        encoding: UTF-8
