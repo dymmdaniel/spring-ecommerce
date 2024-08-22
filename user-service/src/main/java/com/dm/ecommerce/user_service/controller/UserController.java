@@ -1,6 +1,7 @@
 package com.dm.ecommerce.user_service.controller;
 
 import com.dm.ecommerce.common_service.controller.CommonMongoController;
+import com.dm.ecommerce.user_service.config.Message;
 import com.dm.ecommerce.user_service.model.Role;
 import com.dm.ecommerce.user_service.model.User;
 import com.dm.ecommerce.user_service.service.RoleService;
@@ -26,9 +27,6 @@ public class UserController extends CommonMongoController<User, UserService> {
     @Autowired
     private RoleService roleService;
 
-    @Autowired
-    private MessageSource messageSource;
-
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid User entity, BindingResult result) {
         List<Role> roles = this.roleService.findByName("ROLE_USER");
@@ -44,7 +42,7 @@ public class UserController extends CommonMongoController<User, UserService> {
 
         if (!login.containsKey("user") | !login.containsKey("password")) {
             Map<String, String> body = new HashMap<>();
-            body.put("message", messageSource.getMessage("user.login", null, new Locale("es")));
+            body.put("message", Message.get("user.login"));
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
         }
 

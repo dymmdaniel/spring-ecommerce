@@ -20,9 +20,11 @@ public class Notification {
     @Id
     private String notificationId;
 
-    private String name;
+    private String title;
 
     private String description;
+
+    private NotificationType notificationType;
 
     @DBRef
     private List<User> users;

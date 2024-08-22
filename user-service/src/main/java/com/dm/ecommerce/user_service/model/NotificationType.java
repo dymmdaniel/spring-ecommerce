@@ -1,6 +1,9 @@
 package com.dm.ecommerce.user_service.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @Entity
 @Table(name = "role")
-public class Role{
+public class NotificationType {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -22,9 +25,7 @@ public class Role{
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    private String roleId;
+    private String idNotificationType;
 
     private String name;
-
-
 }
