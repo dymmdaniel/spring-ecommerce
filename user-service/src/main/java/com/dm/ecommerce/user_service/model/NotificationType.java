@@ -16,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "role")
+@Table(name = "notification_type")
 public class NotificationType {
 
     @Id
@@ -25,7 +25,7 @@ public class NotificationType {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    private String idNotificationType;
+    private String notificationTypeId;
 
     private String name;
 }

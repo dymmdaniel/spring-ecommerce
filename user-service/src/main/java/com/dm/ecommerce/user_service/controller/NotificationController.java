@@ -10,12 +10,9 @@ import com.dm.ecommerce.user_service.service.NotificationService;
 import com.dm.ecommerce.user_service.service.NotificationTypeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -28,18 +25,29 @@ public class NotificationController extends CommonMongoController<Notification, 
 
     @Autowired
     private NotificationTypeService notificationTypeService;
+    
 
-    @PostMapping("/2")
-    public ResponseEntity<?> create2(@RequestParam("typeNotification") String nameType, @RequestBody @Valid Notification entity, BindingResult result){
-        if(nameType.equalsIgnoreCase("pepe")){
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody @Valid Notification entity, BindingResult result) {
+        if (result.hasErrors()) {
+            return super.validate(result);
+        }
+
+        if (entity.getNotificationType()==null) {
             Map<String, String> body = new HashMap<>();
-            body.put("message",Message.get("notification.type"));
+            body.put("message", Message.get("notification.type"));
             System.out.println(body);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
         }
-        NotificationType notificationType = this.notificationTypeService.findByName(nameType);
+        NotificationType notificationType = this.notificationTypeService.findByName(entity.getNotificationType().getName());
         entity.setNotificationType(notificationType);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return super.create(entity,result);
+    }
+
+    @PostMapping("/add/{userId}")
+    public ResponseEntity<?> addUser(@PathVariable("userId")String userId,@RequestParam("notificationId")String notificationId){
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 }
