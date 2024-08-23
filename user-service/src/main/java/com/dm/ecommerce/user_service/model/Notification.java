@@ -24,6 +24,7 @@ public class Notification {
 
     private String description;
 
+
     private NotificationType notificationType;
 
     @DBRef

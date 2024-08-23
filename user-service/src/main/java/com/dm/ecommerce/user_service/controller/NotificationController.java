@@ -6,6 +6,7 @@ import com.dm.ecommerce.user_service.model.Notification;
 import com.dm.ecommerce.user_service.model.NotificationType;
 import com.dm.ecommerce.user_service.service.NotificationService;
 import com.dm.ecommerce.user_service.service.NotificationTypeService;
+import com.dm.ecommerce.user_service.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,9 @@ public class NotificationController extends CommonMongoController<Notification, 
 
     @Autowired
     private NotificationTypeService notificationTypeService;
+
+    @Autowired
+    private UserService userService;
     
 
     @PostMapping
@@ -42,7 +46,13 @@ public class NotificationController extends CommonMongoController<Notification, 
     }
 
     @PostMapping("/add/{userId}")
-    public ResponseEntity<?> addUser(@PathVariable("userId")String userId,@RequestParam("notificationId")String notificationId){
+    public ResponseEntity<?> addUser(@PathVariable("userId")String userId,@RequestBody @Valid Notification notification, BindingResult result){
+        if (result.hasErrors()) {
+            return super.validate(result);
+        }
+
+        
+
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

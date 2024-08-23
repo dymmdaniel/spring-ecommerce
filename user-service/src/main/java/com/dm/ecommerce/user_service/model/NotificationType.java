@@ -28,4 +28,6 @@ public class NotificationType {
     private String notificationTypeId;
 
     private String name;
+
+    private String comunicationMedia;
 }
