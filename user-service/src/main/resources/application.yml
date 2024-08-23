@@ -10,7 +10,7 @@ spring:
     application:
         name: user-service
     config:
-        location: en
+        location: es
     data:
         mongodb:
             database: dm_ecommerce_db

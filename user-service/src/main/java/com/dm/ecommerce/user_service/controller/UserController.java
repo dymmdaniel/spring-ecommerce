@@ -8,7 +8,6 @@ import com.dm.ecommerce.user_service.service.RoleService;
 import com.dm.ecommerce.user_service.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

@@ -25,13 +25,13 @@ public class Message {
         messageSource =  mSource;
     }
 
-    public static String get(String message){
+    public static String get(String key){
         String locale = env.getProperty("spring.config.location");
         if(locale.equalsIgnoreCase("en") || locale.equalsIgnoreCase("us") || locale.equalsIgnoreCase("en_US")){
             locale = null;
         }
 
-        return messageSource.getMessage(message, null,locale==null ? Locale.getDefault():new Locale(locale));
+        return messageSource.getMessage(key, null,locale==null ? Locale.getDefault():new Locale(locale));
     }
 
 }

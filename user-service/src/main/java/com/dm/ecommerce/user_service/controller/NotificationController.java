@@ -4,8 +4,6 @@ import com.dm.ecommerce.common_service.controller.CommonMongoController;
 import com.dm.ecommerce.user_service.config.Message;
 import com.dm.ecommerce.user_service.model.Notification;
 import com.dm.ecommerce.user_service.model.NotificationType;
-import com.dm.ecommerce.user_service.model.Role;
-import com.dm.ecommerce.user_service.model.User;
 import com.dm.ecommerce.user_service.service.NotificationService;
 import com.dm.ecommerce.user_service.service.NotificationTypeService;
 import jakarta.validation.Valid;
@@ -36,7 +34,6 @@ public class NotificationController extends CommonMongoController<Notification, 
         if (entity.getNotificationType()==null) {
             Map<String, String> body = new HashMap<>();
             body.put("message", Message.get("notification.type"));
-            System.out.println(body);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
         }
         NotificationType notificationType = this.notificationTypeService.findByName(entity.getNotificationType().getName());
