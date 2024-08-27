@@ -15,4 +15,6 @@ public interface CommonSQLService<E>{
     public E save(E entity);
 
     public void deleteById(String id);
+
+    public boolean existsById(String id);
 }

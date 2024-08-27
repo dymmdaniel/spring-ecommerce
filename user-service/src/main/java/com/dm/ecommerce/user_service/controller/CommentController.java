@@ -38,7 +38,7 @@ public class CommentController extends CommonMongoController<Comment, CommentSer
             return ResponseEntity.notFound().build();
         }
         List<Comment> Comment = new ArrayList<>();
-        if(optionalUser.get().getComments()==null){
+        if(optionalUser.get().getComments()==null || optionalUser.get().getComments().isEmpty()){
             Comment.add(entity);
         }else{
             Comment = optionalUser.get().getComments();

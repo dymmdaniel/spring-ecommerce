@@ -37,7 +37,7 @@ public class AddressController extends CommonMongoController<Address, AddressSer
             return ResponseEntity.notFound().build();
         }
         List<Address> addresses = new ArrayList<>();
-        if(optionalUser.get().getAddresses()==null){
+        if(optionalUser.get().getAddresses()==null || optionalUser.get().getAddresses().isEmpty()){
             addresses.add(entity);
         }else{
             addresses = optionalUser.get().getAddresses();
