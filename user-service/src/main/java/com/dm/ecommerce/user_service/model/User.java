@@ -35,9 +35,6 @@ public class User {
     private List<Role> roles;
 
     @DBRef
-    private List<Notification> notifications;
-
-    @DBRef
     private List<Comment> comments;
 
     @DBRef

@@ -1,13 +1,13 @@
 package com.dm.ecommerce.user_service.controller;
 
 import com.dm.ecommerce.common_service.controller.CommonMongoController;
+import com.dm.ecommerce.user_service.config.Message;
 import com.dm.ecommerce.user_service.model.Role;
 import com.dm.ecommerce.user_service.model.User;
 import com.dm.ecommerce.user_service.service.RoleService;
 import com.dm.ecommerce.user_service.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -20,14 +20,11 @@ import java.util.*;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/auth")
 public class UserController extends CommonMongoController<User, UserService> {
 
     @Autowired
     private RoleService roleService;
-
-    @Autowired
-    private MessageSource messageSource;
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid User entity, BindingResult result) {
@@ -44,7 +41,7 @@ public class UserController extends CommonMongoController<User, UserService> {
 
         if (!login.containsKey("user") | !login.containsKey("password")) {
             Map<String, String> body = new HashMap<>();
-            body.put("message", messageSource.getMessage("user.login", null, new Locale("es")));
+            body.put("message", Message.get("user.login"));
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
         }
 

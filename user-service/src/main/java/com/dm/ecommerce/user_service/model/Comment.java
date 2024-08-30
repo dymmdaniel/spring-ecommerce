@@ -1,5 +1,7 @@
 package com.dm.ecommerce.user_service.model;
 
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +23,6 @@ public class Comment {
     @DBRef
     private String userId;
 
-    //Asociar al otro microservicio
     private String itemId;
 
     private String title;

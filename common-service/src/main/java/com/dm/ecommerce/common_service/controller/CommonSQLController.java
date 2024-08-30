@@ -1,5 +1,6 @@
 package com.dm.ecommerce.common_service.controller;
 
+import com.dm.ecommerce.common_service.config.CommonService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +14,7 @@ import java.util.Optional;
 import com.dm.ecommerce.common_service.service.CommonSQLService;
 
 @RestController
-public class CommonSQLController<E, S extends CommonSQLService<E>> extends CommonService{
+public class CommonSQLController<E, S extends CommonSQLService<E>> extends CommonService {
 
     @Autowired
     protected S service;

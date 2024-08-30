@@ -51,4 +51,9 @@ public class CommonMongoServiceImpl<E,R extends MongoRepository<E,String>> imple
         repository.deleteById(id);
 
     }
+
+    @Override
+    public boolean existById(String id) {
+        return repository.existsById(id);
+    }
 }
