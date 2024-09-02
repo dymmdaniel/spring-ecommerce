@@ -20,7 +20,7 @@ import java.util.*;
 
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/user")
 public class UserController extends CommonMongoController<User, UserService> {
 
     @Autowired

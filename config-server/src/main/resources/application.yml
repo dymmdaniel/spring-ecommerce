@@ -6,9 +6,11 @@ spring:
         name: config-server
     cloud:
       config:
+          location: es
           server:
               git:
                 uri: https://github.com/dymmdaniel/spring-ecommerce-config
                 clone-on-start: true
+
 
 
